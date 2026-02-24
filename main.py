@@ -58,7 +58,7 @@ def query():
             wids[nr["BJDM"]] = nr["WID"]
     base_url = "https://yjsxk.buaa.edu.cn/yjsxkapp/sys/xsxkappbuaa/xsxkCourse/loadAllCourseInfo.do?"
     timestamp = int(time.time() * 1000)
-    new_url = base_url + "_=" + str(timestamp) + "&pageSize=3000"
+    new_url = base_url + "_=" + str(timestamp) + "&pageSize=8000"
 
     course = get_web(new_url)
     courses = course.json()
@@ -114,4 +114,5 @@ def loop(bhdic):
 if __name__ == "__main__":
 	k = query()
 	loop(k)
+
 
