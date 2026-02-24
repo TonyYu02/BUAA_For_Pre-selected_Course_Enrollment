@@ -8,6 +8,8 @@ authen = {
     'username': '',
     'password': '',
 }
+xueqi="20252"
+#这里填写学期，如20252：2025-2026学年第2学期
 
 headers = {
     'User-Agent': 'Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/139.0.0.0 Safari/537.36'
@@ -50,7 +52,7 @@ def query():
     yxk = {}
     wids = {}
     for nr in yx["xkjgList"]:
-        if nr["BJDM"] not in set(bjdm) and "MXMK" not in nr["BJDM"]:
+        if nr["BJDM"] not in set(bjdm) and "MXMK" not in nr["BJDM"] and nr['XNXQDM']==xueqi:
             bjdm.append(nr["BJDM"])
             yxk[nr["BJDM"]] = nr["YYZ"]
             wids[nr["BJDM"]] = nr["WID"]
@@ -112,3 +114,4 @@ def loop(bhdic):
 if __name__ == "__main__":
 	k = query()
 	loop(k)
+
