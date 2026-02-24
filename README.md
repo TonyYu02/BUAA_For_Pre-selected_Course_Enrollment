@@ -17,12 +17,13 @@
    pip install bs4 requests tabulate
    ```
 
-3. 填写用户名与密码（注意要有单引号）
+3. 填写用户名与密码（注意要有单引号）以及学期  
    ```
    authen = {
     'username':'填入学号' ,
     'password': '填入密码',
    }
+   xueqi="20252" 这里填写学期，如20252：2025-2026学年第2学期
    ```
 4. 运行（提供四种方法）
    1. **推荐**直接全下载or git clone下来，直接运行`选课.bat`，前提是安装好Python且加到PATH中。  
