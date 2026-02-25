@@ -76,7 +76,15 @@ def query():
                  yxk[course["BJDM"]]])
             bhdic[i]= wids[course["BJDM"]]
             i=i+1
-    print(tabulate(cours, head, tablefmt="fancy_grid"))
+    max_widths = [None, None, 20, None, None, None, None, None]
+    print(tabulate(
+        cours,
+        headers=head,
+        tablefmt="fancy_grid",
+        maxcolwidths=max_widths,
+        numalign="center",
+        stralign="center"
+    ))
     return bhdic
 
 
@@ -114,5 +122,6 @@ def loop(bhdic):
 if __name__ == "__main__":
 	k = query()
 	loop(k)
+
 
 
