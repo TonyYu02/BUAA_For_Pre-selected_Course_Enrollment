@@ -88,17 +88,18 @@ def query():
         stralign="center"
     ))
     print("已使用意愿值:"+str(yyz_sum)+"，可用意愿值"+str(100-yyz_sum))
-    return bhdic
+    return bhdic,yyz_sum,cours
 
 
-def loop(bhdic):
+def loop(bhdic,yyz_sum,cours):
     a = int(input("按1刷新，按2修改对应意愿值，其余键退出："))
     if a == 1:
         os.system('cls')
-        k = query()
-        loop(k)
+        k,_,cc = query()
+        loop(k,_,cc)
     elif a == 2:
         i = int(input("修改意愿值，请输入已选课程编号："))
+        print("所选课程可用的意愿值为：1-"+str(100-yyz_sum+int(cours[i-1][7])))
         j= int(input("修改后的值为："))
         xg="https://yjsxk.buaa.edu.cn/yjsxkapp/sys/xsxkappbuaa/xsxkYxxk/changeYyz.do?_="
         timestamp = int(time.time() * 1000)
@@ -115,13 +116,14 @@ def loop(bhdic):
             print("修改成功。")
         else:
             print(rj["msg"])
-        k = query()
-        loop(k)
+        k, _, cc = query()
+        loop(k, _, cc)
 
     else:
         session.close()
         exit(0)
 
 if __name__ == "__main__":
-	k = query()
-	loop(k)
+	k,_,cc = query()
+	loop(k,_,cc)
+
