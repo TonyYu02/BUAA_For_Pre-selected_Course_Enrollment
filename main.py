@@ -51,11 +51,13 @@ def query():
     bjdm = []
     yxk = {}
     wids = {}
+    yyz_sum=0
     for nr in yx["xkjgList"]:
         if nr["BJDM"] not in set(bjdm) and "MXMK" not in nr["BJDM"] and nr['XNXQDM']==xueqi:
             bjdm.append(nr["BJDM"])
             yxk[nr["BJDM"]] = nr["YYZ"]
             wids[nr["BJDM"]] = nr["WID"]
+            yyz_sum=yyz_sum+int(nr["YYZ"])
     base_url = "https://yjsxk.buaa.edu.cn/yjsxkapp/sys/xsxkappbuaa/xsxkCourse/loadAllCourseInfo.do?"
     timestamp = int(time.time() * 1000)
     new_url = base_url + "_=" + str(timestamp) + "&pageSize=8000"
@@ -85,6 +87,7 @@ def query():
         numalign="center",
         stralign="center"
     ))
+    print("已使用意愿值:"+str(yyz_sum)+"，可用意愿值"+str(100-yyz_sum))
     return bhdic
 
 
@@ -122,6 +125,3 @@ def loop(bhdic):
 if __name__ == "__main__":
 	k = query()
 	loop(k)
-
-
-
