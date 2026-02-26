@@ -14,7 +14,7 @@
 1. 安装依赖（前提是已安装Python，本项目在Python3.12下测试通过）
 
    ```
-   pip install bs4 requests tabulate
+   pip install bs4 requests tabulate wcwidth
    ```
 
 3. 填写用户名与密码（注意要有单引号）以及学期  
